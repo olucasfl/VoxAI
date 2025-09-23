@@ -16,6 +16,7 @@ O sistema lê PDFs de documentos importantes, processa seus trechos e utiliza em
 
 ## Estrutura do Projeto
 
+```
 chatVatican/
 │
 ├── data/ # 📂 Dados locais (não enviados ao GitHub)
@@ -34,7 +35,7 @@ chatVatican/
 ├── main.py # Script de execução do chat no terminal
 ├── requirements.txt # Dependências do Python
 └── .gitignore # Ignora pastas/pastas sensíveis como PDF e embeddings
-
+```
 ---
 
 ## Configuração
