@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: 'Georgia', serif;
+  background: #f5f0e6; /* tom creme */
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
