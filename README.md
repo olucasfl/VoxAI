@@ -17,24 +17,38 @@ O sistema lê PDFs de documentos importantes, processa seus trechos e utiliza em
 ## Estrutura do Projeto 📂
 
 ```
-chatVatican/
+voxAI/
 │
-├── data/ # Dados locais (não enviados ao GitHub)
-│ └── pdfs/ # PDFs oficiais da Igreja (Catecismo, encíclicas, Código de Direito Canônico, Bíblia, etc.)
+├── backend/          # Código da API FastAPI
+│   └── app.py        # Expõe a função responder_com_documentos para o frontend
 │
-├── embeddings/ # Embeddings gerados a partir dos PDFs (não enviados ao GitHub)
-│ └── embeddings.pkl # Arquivo que armazena os vetores de embeddings
+├── frontend/         # Frontend React com Vite
+│   ├── index.html
+│   ├── package.json
+│   ├── vite.config.js
+│   └── src/
+│       ├── App.jsx
+│       ├── main.jsx
+│       └── components/
+│           ├── Chat.jsx
+│           └── Message.jsx
 │
-├── src/ # Código fonte principal
-│ ├── chat.py # Lógica principal do chat e integração com OpenAI
-│ ├── embeddings.py # Funções para gerar, salvar e carregar embeddings
-│ ├── pdf_processor.py # Funções para extrair texto dos PDFs e criar trechos/chunks
-│ ├── vector_db.py # Busca de trechos relevantes usando embeddings
-│ └── config.py # Configurações do projeto (caminhos, chaves e parâmetros)
+├── data/
+│   └── pdfs/ (Contém todos os pdfs para consulta de informação)
 │
-├── main.py # Script de execução do chat no terminal
-├── requirements.txt # Dependências do Python
-└── .gitignore # Ignora pastas/pastas sensíveis como PDF e embeddings
+├── embeddings/
+│   └── embeddings.pkl (gerado automaticamente)
+│
+├── src/
+│   ├── chat.py
+│   ├── config.py
+│   ├── embeddings.py
+│   ├── pdf_processor.py
+│   └── vector_db.py
+│
+├── main.py
+├── requirements.txt
+└── .gitignore
 ```
 ---
 
@@ -86,22 +100,34 @@ O chat mantém o histórico das interações, permitindo respostas mais contextu
 
 ## Executando o Chat ▶️
 
-Para iniciar o chat no terminal, use:
+### 1. Iniciando o Backend (Python)
 
-```python
-python main.py
+No terminal, dentro da pasta do projeto `(chatVatican/)`:
+
+```bash
+python -m uvicorn backend.app:app --reload
 ```
 
-- Digite sua pergunta e pressione Enter.
-- Para encerrar, digite: `sair`.
+- O backend ficará rodando em `http://127.0.0.1:8000`.
+- Este serviço é responsável por receber suas perguntas e enviar respostas baseadas nos PDFs da Igreja.
 
-Exemplo de interação:
+### 2. Iniciando o Frontend (React)
 
-```vbnet
-Pergunta: O que o Catecismo diz sobre pecado mortal?
-Vox: Vamos lá, de acordo com o Catecismo da Igreja Católica, 1857 diz que: "Para que um pecado seja mortal, é necessário que haja matéria grave, pleno conhecimento e deliberação."
-Resumo: Um pecado é considerado mortal quando envolve algo grave, é feito com plena consciência e escolha voluntária.
+No terminal, dentro da pasta `frontend/`:
+
+```bash
+npm install
+npm run dev
 ```
+
+- O frontend abrirá em algo como `http://127.0.0.1:5173` ou a porta indicada no terminal.
+- Aqui você verá a interface do chat, com o histórico de mensagens e um campo para digitar perguntas.
+
+### 3. Como usar
+
+- Digite sua pergunta no campo de texto do chat e pressione **Enter** ou clique em **Enviar**.
+- A resposta do VoxAI será exibida logo abaixo.
+- Para encerrar, basta fechar a janela do navegador ou o terminal.
 
 ## Configurações Importantes ⚙️
 
