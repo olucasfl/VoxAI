@@ -1,4 +1,6 @@
+// src/components/Message.jsx
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
 function Message({ sender, text }) {
   const isUser = sender === 'user';
@@ -14,7 +16,11 @@ function Message({ sender, text }) {
           wordBreak: 'break-word'
         }}
       >
-        {text}
+        {isUser ? (
+          text
+        ) : (
+          <ReactMarkdown>{text}</ReactMarkdown>
+        )}
       </div>
     </div>
   );
