@@ -34,10 +34,10 @@ voxAI/
 │           └── Message.jsx
 │
 ├── data/
-│   └── pdfs/ (Contém todos os pdfs para consulta de informação)
+│   └── pdfs/         # Contém todos os pdfs para consulta de informação
 │
 ├── embeddings/
-│   └── embeddings.pkl (gerado automaticamente)
+│   └── embeddings.pkl        # gerado automaticamente
 │
 ├── src/
 │   ├── chat.py
