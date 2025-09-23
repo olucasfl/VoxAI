@@ -1,0 +1,21 @@
+# Virtualenv
+venv/
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs e temporários
+*.log
+*.tmp
+*.cache
+
+# Dados pesados ou derivados
+data/pdfs/
+embeddings/
+
+# Configurações sensíveis
+config.py
